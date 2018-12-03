@@ -9,7 +9,7 @@ import javafx.collections.ObservableList;
 
 public class GetAllTrades {
 
-  public static ObservableList<Trade> getAllTrades() throws Exception {
+  public static ObservableList<Trade> getAllTrades() {
     String sql = "SELECT * FROM TRADES";
     Connection connection = Main.getConnection();
     try {

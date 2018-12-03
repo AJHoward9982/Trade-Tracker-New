@@ -2,12 +2,18 @@ package Main;
 
 
 
+
 import java.security.spec.ECField;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Time;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.DepthTest;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TableColumn;
@@ -29,13 +35,22 @@ public class Controller {
 
     AddRow.addRow(stv, ntv);
 
+    ObservableList<Trade> updatedTradeList = GetAllTrades.getAllTrades();
+    populateTable(updatedTradeList);
+
   }
 
 
   public void clearListPressed() {
     ClearList.clearList();
+
+    ObservableList<Trade> updatedTradeList = GetAllTrades.getAllTrades();
+    populateTable(updatedTradeList);
   }
 
+
+  @FXML
+  private Button deleteButton;
   @FXML
   private TableColumn<Trade, Date> col_date;
   @FXML
@@ -46,7 +61,7 @@ public class Controller {
   private TableColumn<Trade, Integer> col_net;
 
   @FXML
-  private TableView stockTable;
+  private TableView<Trade> stockTable;
 
   @FXML
   private void initialize() throws Exception{
@@ -61,5 +76,21 @@ public class Controller {
 
   private void populateTable(ObservableList<Trade> tradeList) {
     stockTable.setItems(tradeList);
+  }
+
+  public void deleteButtonPressed(ActionEvent actionEvent) {
+
+    Trade trade = stockTable.getSelectionModel().getSelectedItem();
+
+    Date date = trade.getDate();
+    Time time = trade.getTime();
+
+    //System.out.println(date +"-----------------"+ time);
+
+    DeleteSelected.deleteSelected(date,time);
+
+    ObservableList<Trade> updatedTradeList = GetAllTrades.getAllTrades();
+    populateTable(updatedTradeList);
+
   }
 }

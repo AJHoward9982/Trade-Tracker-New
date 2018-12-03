@@ -28,7 +28,7 @@ public class Main extends Application {
 
   }
 
-  public static Connection getConnection() throws Exception {
+  public static Connection getConnection() {
     try {
       String DATABASE_URL = "jdbc:derby:C:\\Users\\trobi\\OneDrive - Florida Gulf Coast University\\IntelliJ Projects\\Trade Tracker\\lib\\guiDB";
 

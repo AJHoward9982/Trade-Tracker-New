@@ -19,7 +19,7 @@ public class ClearList {
     } catch (Exception e) {
       System.out.println(e);
     } finally {
-      System.out.println("Completed");
+      System.out.println("Clear Completed");
     }
 
   }
