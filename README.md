@@ -9,7 +9,11 @@ Info stored:
   
 The information is stored inside of a Derby database and displayed through a GUI built in JavaFX using the Gluon Scene Builder.
 
-[Guidelines followed](https://docs.google.com/spreadsheets/d/1jENM7TZuNQ6QU18a7-_6MhX7dkCNMOk96_2df9_rvi4/edit?usp=sharing)
+The GUI is simple and acts as expected. Each Text Field prompts you with the correct entry format, and all buttons display their function.
+The Table takes up enough of the Scene to display all columns of data.
+The table also sorts as expected by clicking the arrows next to the Column Label.
+
+[Rubric followed](https://docs.google.com/spreadsheets/d/1jENM7TZuNQ6QU18a7-_6MhX7dkCNMOk96_2df9_rvi4/edit?usp=sharing)
 
 # Demo Gif
 
