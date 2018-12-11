@@ -1,19 +1,20 @@
+/*
+Created by: Andrew Howard
+File name: Controller.java
+
+Controls the JavaFX scene using Action Events
+
+Connects button events to actions such as "DeleteSelected" and "ClearList"
+
+ */
 package Main;
 
-
-
-
-import java.security.spec.ECField;
-import java.sql.Connection;
 import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.Time;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.DepthTest;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.ColorPicker;
@@ -30,6 +31,10 @@ public class Controller {
   public TextField stockTicker;
   public TextField netTradeValue;
 
+  /*
+  Gets the Text and Int values in the Text Fields
+  Uses them to enter data into the Derby Database by using the AddRow class
+   */
   public void addStockPressed() {
     //addButton.setText("HI");      Here To test the button action
 
@@ -43,7 +48,9 @@ public class Controller {
 
   }
 
-
+  /*
+  Deletes all entries from the Derby Database by using the ClearList class
+   */
   public void clearListPressed() {
     ClearList.clearList();
 
@@ -72,7 +79,7 @@ public class Controller {
   private TableView<Trade> stockTable;
 
   @FXML
-  private void initialize() throws Exception{
+  private void initialize() throws Exception {
     col_date.setCellValueFactory(new PropertyValueFactory<Trade, Date>("date"));
     col_time.setCellValueFactory(new PropertyValueFactory<Trade, Time>("time"));
     col_ticker.setCellValueFactory(new PropertyValueFactory<Trade, String>("ticker"));
@@ -82,10 +89,18 @@ public class Controller {
 
   }
 
+  /*
+  Displays all of the Derby Table entries in a JavaFX TableView
+
+  Gets run after Add,Delete,and ClearList are pressed to update the table to show the new values.
+   */
   private void populateTable(ObservableList<Trade> tradeList) {
     stockTable.setItems(tradeList);
   }
 
+  /*
+  Calls the DeleteSelected Class to remove the highlighted entry from the Derby Database
+   */
   public void deleteButtonPressed(ActionEvent actionEvent) {
 
     Trade trade = stockTable.getSelectionModel().getSelectedItem();
@@ -95,13 +110,16 @@ public class Controller {
 
     //System.out.println(date +"-----------------"+ time);
 
-    DeleteSelected.deleteSelected(date,time);
+    DeleteSelected.deleteSelected(date, time);
 
     ObservableList<Trade> updatedTradeList = GetAllTrades.getAllTrades();
     populateTable(updatedTradeList);
 
   }
 
+  /*
+  Changes the backdrop color as decided by the color picker selection
+   */
   public void changeColor(ActionEvent actionEvent) {
     Color color = colorPicker.getValue();
     backdrop.setStyle(

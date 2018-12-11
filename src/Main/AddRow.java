@@ -1,3 +1,13 @@
+/*
+Created by: Andrew Howard
+File name: AddRow.java
+
+Uses a SQL prepared statement to add a trade into the Derby Database.
+
+Pulls Name and Net from Text Fields
+
+Date and Time are acquired by the LocalDate.now() and LocalTime.not() methods; Both from the SQL Library
+ */
 package Main;
 
 import static Main.Main.getConnection;

@@ -25,7 +25,8 @@ public class GetAllTrades {
     return null;
   }
 
-  private static ObservableList<Trade> getTradeObjects(ResultSet rs) throws ClassNotFoundException, SQLException {
+  private static ObservableList<Trade> getTradeObjects(ResultSet rs)
+      throws ClassNotFoundException, SQLException {
 
     try {
       ObservableList<Trade> tradeList = FXCollections.observableArrayList();

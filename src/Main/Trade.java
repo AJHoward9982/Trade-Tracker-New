@@ -1,9 +1,17 @@
+/*
+Created by: Andrew Howard
+File name: Trade.java
+
+Defines the trade object
+When a trade is pulled from the Derby Database, this is what interprets it to be placed into the table
+ */
 package Main;
 
 import java.sql.Date;
 import java.sql.Time;
 
 public class Trade {
+
   private Date date;
   private Time time;
   private String ticker;
