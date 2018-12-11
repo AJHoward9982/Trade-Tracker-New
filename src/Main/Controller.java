@@ -16,10 +16,13 @@ import javafx.fxml.FXML;
 import javafx.scene.DepthTest;
 import javafx.scene.control.Button;
 
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 
 public class Controller {
 
@@ -61,6 +64,11 @@ public class Controller {
   private TableColumn<Trade, Integer> col_net;
 
   @FXML
+  private ColorPicker colorPicker;
+  @FXML
+  private GridPane backdrop;
+
+  @FXML
   private TableView<Trade> stockTable;
 
   @FXML
@@ -92,5 +100,12 @@ public class Controller {
     ObservableList<Trade> updatedTradeList = GetAllTrades.getAllTrades();
     populateTable(updatedTradeList);
 
+  }
+
+  public void changeColor(ActionEvent actionEvent) {
+    Color color = colorPicker.getValue();
+    backdrop.setStyle(
+        "-fx-background-color: " + String.format("#%02X%02X%02X", (int) (color.getRed() * 255),
+            (int) (color.getGreen() * 255), (int) (color.getBlue() * 255)));
   }
 }

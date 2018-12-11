@@ -19,6 +19,7 @@ public class Main extends Application {
     primaryStage.setScene(new Scene(root, 1000, 600));
     primaryStage.setResizable(false);
     primaryStage.show();
+    root.getStylesheets().add("Trade.css");
   }
 
 
